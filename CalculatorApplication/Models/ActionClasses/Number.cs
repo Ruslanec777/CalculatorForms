@@ -7,12 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalcLibrary.Models.MathFunctions
+namespace CalculatorApplication.Models.ActionClasses
 {
-    internal class SumAct : MathObject
+    public class Number : MathObject
     {
-        public override List<TypesMathItems> ValidTypesOnLeft { get; }=new List<TypesMathItems>() { TypesMathItems.Number };
-        public override List<TypesMathItems> ValidTypesOnRight { get ; }
+        public Number(IMathAction mathActionParent, string text) : base(mathActionParent)
+        {
+            Value = double.Parse(text);
+
+        }
+
+        public override List<TypesMathItems> ValidTypesOnLeft => throw new NotImplementedException();
+
+        public override List<TypesMathItems> ValidTypesOnRight => throw new NotImplementedException();
+
         public override IMathAction MathActionParent { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override float GetValue()

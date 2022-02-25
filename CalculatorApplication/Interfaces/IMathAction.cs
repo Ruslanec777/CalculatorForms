@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CalcLibrary.Interfaces
 {
-    internal interface IMathAction
+    public interface IMathAction
     {
-        List<IMathObject> _actions { get; set; }
+        List<IMathObject> Actions { get; set; }
     }
 }

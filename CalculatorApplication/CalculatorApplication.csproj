@@ -41,25 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Enums\PrioritiesOperation.cs" />
     <Compile Include="Enums\TypesMathItems.cs" />
-    <Compile Include="IMathAction.cs" />
-    <Compile Include="IMathObject.cs" />
     <Compile Include="Interfaces\IMathAction.cs" />
     <Compile Include="Interfaces\IMathObject.cs" />
-    <Compile Include="MathAction.cs" />
-    <Compile Include="MathFunc.cs" />
     <Compile Include="MathFunctions\SumAct.cs" />
-    <Compile Include="MathObject.cs" />
+    <Compile Include="Models\ActionClasses\Number.cs" />
     <Compile Include="Models\MathAction.cs" />
     <Compile Include="Models\MathFunc.cs" />
     <Compile Include="Models\MathFunctions\SumAct.cs" />
-    <Compile Include="Models\MathObject.cs" />
-    <Compile Include="PrioritiesOperation.cs" />
+    <Compile Include="Infrastructure\MathObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SumAct.cs" />
-    <Compile Include="TypesMathItems.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

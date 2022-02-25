@@ -11,18 +11,27 @@ namespace CalcLibrary.Interfaces
     {
         TypesMathItems TypesMathObjects { get; set; }
         PrioritiesOperation PrioritiesOperation { get; set; }
-        public int NumberInLine { get; set; }
-        public string StringRepresentation { get; set; }
+        int NumberInLine { get; set; }
+
+        IMathAction MathActionParent { get; set; }
+        string StringRepresentation { get; set; }
 
         /// <summary>
         /// Допустимые типы слева
         /// </summary>
-        public List<TypesMathItems> ValidTypesOnLeft { get;  }
+        List<TypesMathItems> ValidTypesOnLeft { get; }
 
         /// <summary>
         /// Допустимые типы справа
         /// </summary>
-        public List<TypesMathItems> ValidTypesOnRight { get;  }
-        public abstract float GetValue();
+        List<TypesMathItems> ValidTypesOnRight { get; }
+
+        IMathObject PreviousElement { get; set; }
+        float GetValue();
+
+        void AddYourselfToActionQueue();
+
+        IMathObject StartCalculation();
+
     }
 }

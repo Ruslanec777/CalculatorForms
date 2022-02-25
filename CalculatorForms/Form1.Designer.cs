@@ -65,6 +65,7 @@
             this.Btn_1.Size = new System.Drawing.Size(75, 75);
             this.Btn_1.TabIndex = 4;
             this.Btn_1.Text = "1";
+            this.Btn_1.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton1
             // 
@@ -81,7 +82,7 @@
             this.guna2CircleButton1.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton1.TabIndex = 5;
             this.guna2CircleButton1.Text = "2";
-            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
+            this.guna2CircleButton1.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton2
             // 
@@ -98,6 +99,7 @@
             this.guna2CircleButton2.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton2.TabIndex = 6;
             this.guna2CircleButton2.Text = "3";
+            this.guna2CircleButton2.Click += new System.EventHandler(this.ClickNumber);
             // 
             // PlusBtn
             // 
@@ -148,6 +150,7 @@
             this.DecPointBtn.Size = new System.Drawing.Size(75, 75);
             this.DecPointBtn.TabIndex = 10;
             this.DecPointBtn.Text = ",";
+            this.DecPointBtn.Click += new System.EventHandler(this.DecPointBtnClick);
             // 
             // Btn_0
             // 
@@ -167,6 +170,7 @@
             this.Btn_0.TabIndex = 12;
             this.Btn_0.Text = "0";
             this.Btn_0.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.Btn_0.Click += new System.EventHandler(this.ClickNumber);
             // 
             // MinusBtn
             // 
@@ -200,6 +204,7 @@
             this.guna2CircleButton10.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton10.TabIndex = 15;
             this.guna2CircleButton10.Text = "6";
+            this.guna2CircleButton10.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton11
             // 
@@ -216,6 +221,7 @@
             this.guna2CircleButton11.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton11.TabIndex = 14;
             this.guna2CircleButton11.Text = "5";
+            this.guna2CircleButton11.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton12
             // 
@@ -232,6 +238,7 @@
             this.guna2CircleButton12.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton12.TabIndex = 13;
             this.guna2CircleButton12.Text = "4";
+            this.guna2CircleButton12.Click += new System.EventHandler(this.ClickNumber);
             // 
             // DevideBtn
             // 
@@ -314,7 +321,6 @@
             this.MultiplyBtn.Size = new System.Drawing.Size(75, 75);
             this.MultiplyBtn.TabIndex = 20;
             this.MultiplyBtn.Text = "x";
-            this.MultiplyBtn.Click += new System.EventHandler(this.guna2CircleButton17_Click);
             // 
             // guna2CircleButton18
             // 
@@ -331,6 +337,7 @@
             this.guna2CircleButton18.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton18.TabIndex = 19;
             this.guna2CircleButton18.Text = "9";
+            this.guna2CircleButton18.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton19
             // 
@@ -347,7 +354,7 @@
             this.guna2CircleButton19.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton19.TabIndex = 18;
             this.guna2CircleButton19.Text = "8";
-            this.guna2CircleButton19.Click += new System.EventHandler(this.guna2CircleButton19_Click);
+            this.guna2CircleButton19.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton20
             // 
@@ -364,12 +371,14 @@
             this.guna2CircleButton20.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton20.TabIndex = 17;
             this.guna2CircleButton20.Text = "7";
+            this.guna2CircleButton20.Click += new System.EventHandler(this.ClickNumber);
             // 
             // DisplayTextBox
             // 
+            this.DisplayTextBox.BackColor = System.Drawing.Color.Black;
             this.DisplayTextBox.BorderColor = System.Drawing.Color.Black;
             this.DisplayTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.DisplayTextBox.DefaultText = "";
+            this.DisplayTextBox.DefaultText = "0";
             this.DisplayTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.DisplayTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.DisplayTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -378,7 +387,7 @@
             this.DisplayTextBox.FillColor = System.Drawing.Color.Black;
             this.DisplayTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.DisplayTextBox.FocusedState.Parent = this.DisplayTextBox;
-            this.DisplayTextBox.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DisplayTextBox.Font = new System.Drawing.Font("Arial", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(204)));
             this.DisplayTextBox.ForeColor = System.Drawing.Color.White;
             this.DisplayTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.DisplayTextBox.HoverState.Parent = this.DisplayTextBox;
@@ -386,7 +395,8 @@
             this.DisplayTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DisplayTextBox.Name = "DisplayTextBox";
             this.DisplayTextBox.PasswordChar = '\0';
-            this.DisplayTextBox.PlaceholderText = "0";
+            this.DisplayTextBox.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.DisplayTextBox.PlaceholderText = "";
             this.DisplayTextBox.SelectedText = "";
             this.DisplayTextBox.ShadowDecoration.Parent = this.DisplayTextBox;
             this.DisplayTextBox.Size = new System.Drawing.Size(313, 64);
@@ -421,7 +431,6 @@
             this.Controls.Add(this.Btn_1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -447,7 +456,7 @@
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton18;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton19;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton20;
-        private Guna.UI2.WinForms.Guna2TextBox DisplayTextBox;
+        public Guna.UI2.WinForms.Guna2TextBox DisplayTextBox;
     }
 }
 

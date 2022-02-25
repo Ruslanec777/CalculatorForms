@@ -1,4 +1,9 @@
-﻿using System;
+﻿using CalcLibrary.Interfaces;
+using CalcLibrary.Models;
+using CalculatorApplication.Models.ActionClasses;
+using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,29 +17,45 @@ namespace CalculatorForms
 {
     public partial class Form1 : Form
     {
+        public IMathAction Action { get; set; }= new MathAction();
         public Form1()
         {
             InitializeComponent();
+            new Number (Action,  DisplayTextBox.Text).AddYourselfToActionQueue() ;
+            
         }
 
-        private void guna2CircleButton17_Click(object sender, EventArgs e)
+        private void AddMathObjectToAction(IMathObject mathObject)
         {
-
+            throw new NotImplementedException();
         }
 
-        private void guna2CircleButton1_Click(object sender, EventArgs e)
+        private void ClickNumber(object sender, EventArgs e)
         {
+            CustomButtonBase buttonBase = (CustomButtonBase)sender;
 
+            DisplayTextBox.Text += buttonBase.Text;
+
+            if (DisplayTextBox.Text[0] == '0' && DisplayTextBox.Text[1] != ',')
+            {
+                DisplayTextBox.Text = DisplayTextBox.Text.Remove(0, 1);
+            }
+
+            if (Action.Actions.Last().GetType().Equals(typeof(Number))) 
+            {
+                Action.Actions.RemoveAt(Action.Actions.Count - 1);
+
+                new Number(Action, DisplayTextBox.Text).AddYourselfToActionQueue();
+
+            }
         }
 
-        private void guna2CircleButton19_Click(object sender, EventArgs e)
+        private void DecPointBtnClick(object sender, EventArgs e)
         {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            if (!DisplayTextBox.Text.Any(x => x == ','))
+            {
+                ClickNumber(sender, e);
+            }
         }
     }
 }

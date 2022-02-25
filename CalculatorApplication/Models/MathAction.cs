@@ -9,6 +9,6 @@ namespace CalcLibrary.Models
 {
     public class MathAction :IMathAction
     {
-        public List<IMathObject> _actions { get; set; }
+        public List<IMathObject> Actions { get; set; }
     }
 }
