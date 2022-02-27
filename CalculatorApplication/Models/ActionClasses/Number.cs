@@ -11,17 +11,23 @@ namespace CalculatorApplication.Models.ActionClasses
 {
     public class Number : MathObject
     {
-        public Number(IMathAction mathActionParent, string text) : base(mathActionParent)
-        {
-            Value = double.Parse(text);
+        public bool isCompletedResult= false;
 
+        //public string Text1;
+
+        public Number(IMathAction mathActionParent) : base(mathActionParent)
+        {
+            Text = "0";
+        }
+
+        public Number(IMathAction mathActionParent, string text): this(mathActionParent)
+        {
+            Text = text;
         }
 
         public override List<TypesMathItems> ValidTypesOnLeft => throw new NotImplementedException();
 
         public override List<TypesMathItems> ValidTypesOnRight => throw new NotImplementedException();
-
-        public override IMathAction MathActionParent { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public override float GetValue()
         {

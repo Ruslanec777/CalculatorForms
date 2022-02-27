@@ -14,7 +14,8 @@ namespace CalcLibrary.Interfaces
         int NumberInLine { get; set; }
 
         IMathAction MathActionParent { get; set; }
-        string StringRepresentation { get; set; }
+
+        string Text { get; set; }
 
         /// <summary>
         /// Допустимые типы слева
@@ -28,8 +29,6 @@ namespace CalcLibrary.Interfaces
 
         IMathObject PreviousElement { get; set; }
         float GetValue();
-
-        void AddYourselfToActionQueue();
 
         IMathObject StartCalculation();
 

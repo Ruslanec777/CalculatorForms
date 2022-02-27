@@ -8,6 +8,8 @@ namespace CalcLibrary.Interfaces
 {
     public interface IMathAction
     {
-        List<IMathObject> Actions { get; set; }
+        void Add(IMathObject mathObject);
+        IMathObject Last();
+        void Clear();
     }
 }

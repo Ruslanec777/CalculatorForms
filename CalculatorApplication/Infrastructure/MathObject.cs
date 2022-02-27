@@ -12,33 +12,26 @@ namespace CalculatorApplication.Infrastructure
         public TypesMathItems TypesMathObjects { get; set; }
         public PrioritiesOperation PrioritiesOperation { get; set; }
         public int NumberInLine { get; set; }
-        public string StringRepresentation
+        public string Text
         {
             get
             {
                 return Value.ToString();
             }
 
+            // TODO поправить
             set { }
         }
         public abstract List<TypesMathItems> ValidTypesOnLeft { get; }
         public abstract List<TypesMathItems> ValidTypesOnRight { get; }
-        public abstract IMathAction MathActionParent { get; set; }
+        public IMathAction MathActionParent { get; set; }
         public IMathObject PreviousElement { get; set; }
 
         public abstract float GetValue();
 
         public MathObject(IMathAction mathActionParent)
         {
-            MathActionParent=mathActionParent;
-        }
-
-        public void AddYourselfToActionQueue()
-        {
-            PreviousElement = MathActionParent.Actions.LastOrDefault();
-
-            NumberInLine = PreviousElement.NumberInLine + 1;
-            MathActionParent.Actions.Add(this);
+            MathActionParent = mathActionParent;
         }
         public abstract IMathObject StartCalculation();
     }
