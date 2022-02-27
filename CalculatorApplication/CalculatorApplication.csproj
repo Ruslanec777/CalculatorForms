@@ -45,13 +45,15 @@
     <Compile Include="Enums\TypesMathItems.cs" />
     <Compile Include="Interfaces\IMathAction.cs" />
     <Compile Include="Interfaces\IMathObject.cs" />
-    <Compile Include="MathFunctions\SumAct.cs" />
     <Compile Include="Models\ActionClasses\Number.cs" />
     <Compile Include="Models\MathAction.cs" />
     <Compile Include="Models\MathFunc.cs" />
-    <Compile Include="Models\MathFunctions\SumAct.cs" />
     <Compile Include="Infrastructure\MathObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MathFunctions\" />
+    <Folder Include="Models\MathFunctions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

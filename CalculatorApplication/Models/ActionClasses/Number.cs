@@ -21,7 +21,7 @@ namespace CalculatorApplication.Models.ActionClasses
 
         public override List<TypesMathItems> ValidTypesOnRight => throw new NotImplementedException();
 
-        public override IMathAction MathActionParent { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public override IMathAction MathActionParent { get; set; }
 
         public override float GetValue()
         {
