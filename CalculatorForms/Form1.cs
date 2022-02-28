@@ -17,12 +17,13 @@ namespace CalculatorForms
 {
     public partial class Form1 : Form
     {
-        public IMathAction Action { get; set; }= new MathAction();
+        public IMathAction Action { get; set; } = new MathAction();
         public Form1()
         {
             InitializeComponent();
-            new Number (Action,  DisplayTextBox.Text).AddYourselfToActionQueue() ;
-            
+
+            SetDisplayText(Action.Last());
+
         }
 
         private void AddMathObjectToAction(IMathObject mathObject)
@@ -34,20 +35,50 @@ namespace CalculatorForms
         {
             CustomButtonBase buttonBase = (CustomButtonBase)sender;
 
-            DisplayTextBox.Text += buttonBase.Text;
+            IMathObject lastMathObject = Action.Last();
 
-            if (DisplayTextBox.Text[0] == '0' && DisplayTextBox.Text[1] != ',')
+            if (lastMathObject is Number tempNumber && tempNumber.isCompletedResult == true)
             {
-                DisplayTextBox.Text = DisplayTextBox.Text.Remove(0, 1);
+                Action.Clear();
+
+                DisplayClear();
+
+                SetDisplayText(buttonBase.Text);
+
+                Number newNumber = new Number(Action, GetDisplayText());
+
+                Action.Add(newNumber);
+
+                return;
+            }
+            else if (lastMathObject is Number tempNumber2 && tempNumber2.isCompletedResult == false)
+            {
+                AddSymbolToDisplay(buttonBase.Text);
+
+                if (GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
+                {
+                    SetDisplayText(GetDisplayText().Remove(0, 1));
+                }
+
+                string str= GetDisplayText();
+
+                lastMathObject.Text= str;
+
+                //str= lastMathObject.Text;
             }
 
-            if (Action.Actions.Last().GetType().Equals(typeof(Number))) 
-            {
-                Action.Actions.RemoveAt(Action.Actions.Count - 1);
+            //if (lastMathObject.GetType().Equals(typeof(Number)) && (Number)lastMathObject.) 
+            //{
+            //    Action.Actions.RemoveAt(Action.Actions.Count - 1);
 
-                new Number(Action, DisplayTextBox.Text).AddYourselfToActionQueue();
+            //    new Number(Action, DisplayTextBox.Text).AddYourselfToActionQueue();
 
-            }
+            //}
+        }
+
+        private void AddSymbolToDisplay(string text)
+        {
+            DisplayTextBox.Text += text;
         }
 
         private void DecPointBtnClick(object sender, EventArgs e)
@@ -56,6 +87,26 @@ namespace CalculatorForms
             {
                 ClickNumber(sender, e);
             }
+        }
+
+        private void DisplayClear()
+        {
+            DisplayTextBox.Text = "0";
+        }
+
+        private void SetDisplayText(IMathObject mathObject)
+        {
+            DisplayTextBox.Text = mathObject.Text;
+        }
+
+        private void SetDisplayText(string text)
+        {
+            DisplayTextBox.Text = text;
+        }
+
+        private string GetDisplayText()
+        {
+            return DisplayTextBox.Text;
         }
     }
 }
