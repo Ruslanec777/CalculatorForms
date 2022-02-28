@@ -19,7 +19,7 @@ namespace CalculatorApplication.Infrastructure
                 return Value.ToString();
             }
 
-            set { }
+            set { StringRepresentation = value; }
         }
         public abstract List<TypesMathItems> ValidTypesOnLeft { get; }
         public abstract List<TypesMathItems> ValidTypesOnRight { get; }
