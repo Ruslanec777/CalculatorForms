@@ -1,5 +1,6 @@
 ﻿using CalcLibrary.Enums;
 using CalcLibrary.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,7 @@ namespace CalculatorApplication.Infrastructure
         public TypesMathItems TypesMathObjects { get; set; }
         public PrioritiesOperation PrioritiesOperation { get; set; }
         public int NumberInLine { get; set; }
+
         public string Text
         {
             get
@@ -19,7 +21,10 @@ namespace CalculatorApplication.Infrastructure
                 return Value.ToString();
             }
 
-            set { StringRepresentation = value; }
+            set
+            {
+                Value = Convert.ToDouble(value);
+            }
         }
         public abstract List<TypesMathItems> ValidTypesOnLeft { get; }
         public abstract List<TypesMathItems> ValidTypesOnRight { get; }
