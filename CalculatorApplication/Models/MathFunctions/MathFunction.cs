@@ -11,21 +11,46 @@ namespace CalculatorApplication.Models.MathFunctions
 {
     public class MathFunction : MathObject
     {
-        public MathFunction(IMathAction mathActionParent , string SymbolOfFunc) : base(mathActionParent)
+        public MathFunction(IMathAction mathActionParent , TypesMathItems typesMathItems) : base(mathActionParent)
         {
+            TypesMathObjects = typesMathItems;
+
+            switch (TypesMathObjects)
+            {
+                case TypesMathItems.Number:
+                    PrioritiesOperation = PrioritiesOperation.impracticable;
+                    break;
+                case TypesMathItems.Sum:
+                    PrioritiesOperation = PrioritiesOperation.Second;
+
+                    break;
+                case TypesMathItems.Sub:
+                    PrioritiesOperation = PrioritiesOperation.Second;
+
+                    break;
+                case TypesMathItems.Mult:
+                    PrioritiesOperation = PrioritiesOperation.First;
+
+                    break;
+                case TypesMathItems.Dev:
+                    PrioritiesOperation = PrioritiesOperation.First;
+
+                    break;
+                case TypesMathItems.Percentage:
+                    PrioritiesOperation = PrioritiesOperation.WithoutDelay;
+
+                    break;
+                case TypesMathItems.Result:
+                    PrioritiesOperation = PrioritiesOperation.WithoutDelay;
+
+                    break;
+                default:
+                    break;
+            }
         }
-
-        public TypesMathItems TypesMathItems { get; set; }
-
         public override List<TypesMathItems> ValidTypesOnLeft => throw new NotImplementedException();
 
         public override List<TypesMathItems> ValidTypesOnRight => throw new NotImplementedException();
-
-        public MathFunction()
-        {
-
-        }
-
 
     }
 }

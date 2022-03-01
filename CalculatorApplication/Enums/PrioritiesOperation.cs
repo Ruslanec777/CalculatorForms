@@ -11,24 +11,13 @@ namespace CalcLibrary.Enums
     /// </summary>
     public enum PrioritiesOperation
     {
-        /// <summary>
-        /// ( )
-        /// </summary>
-        Brackets,
-        /// <summary>
-        /// 1/x ,x^2 , √x ,%
-        /// </summary>
-        Primary,
+        WithoutDelay,
 
-        /// <summary>
-        /// * , /
-        /// </summary>
-        Multiplicative,
+        First,
 
-        /// <summary>
-        /// + ,-
-        /// </summary>
-        Additive
+        Second,
+
+        impracticable
 
     }
 }

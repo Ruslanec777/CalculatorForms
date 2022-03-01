@@ -63,7 +63,6 @@ namespace CalculatorForms
                     string str = GetDisplayText();
 
                     number.Text = str;
-
                 }
             }
 
@@ -115,8 +114,6 @@ namespace CalculatorForms
 
             TypesMathItems typesMathItems;
 
-
-
             switch (customButtonBase.Text)
             {
                 case "%":
@@ -147,9 +144,8 @@ namespace CalculatorForms
                 default:
                     throw new Exception();
             }
-            
-            Action.Add(new MathFunction())
 
+            Action.Add(new MathFunction(Action, typesMathItems));
         }
     }
 }
