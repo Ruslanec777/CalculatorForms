@@ -117,6 +117,7 @@
             this.PlusBtn.Size = new System.Drawing.Size(75, 75);
             this.PlusBtn.TabIndex = 7;
             this.PlusBtn.Text = "+";
+            this.PlusBtn.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
             // ResultBtn
             // 
@@ -134,6 +135,7 @@
             this.ResultBtn.Size = new System.Drawing.Size(75, 75);
             this.ResultBtn.TabIndex = 11;
             this.ResultBtn.Text = "=";
+            this.ResultBtn.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
             // DecPointBtn
             // 
@@ -188,6 +190,7 @@
             this.MinusBtn.Size = new System.Drawing.Size(75, 75);
             this.MinusBtn.TabIndex = 16;
             this.MinusBtn.Text = "-";
+            this.MinusBtn.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
             // guna2CircleButton10
             // 
@@ -256,6 +259,7 @@
             this.DevideBtn.Size = new System.Drawing.Size(75, 75);
             this.DevideBtn.TabIndex = 24;
             this.DevideBtn.Text = "÷";
+            this.DevideBtn.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
             // guna2CircleButton14
             // 
@@ -272,6 +276,7 @@
             this.guna2CircleButton14.Size = new System.Drawing.Size(75, 75);
             this.guna2CircleButton14.TabIndex = 23;
             this.guna2CircleButton14.Text = "%";
+            this.guna2CircleButton14.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
             // guna2CircleButton15
             // 
@@ -321,6 +326,7 @@
             this.MultiplyBtn.Size = new System.Drawing.Size(75, 75);
             this.MultiplyBtn.TabIndex = 20;
             this.MultiplyBtn.Text = "x";
+            this.MultiplyBtn.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
             // guna2CircleButton18
             // 
@@ -398,6 +404,7 @@
             this.DisplayTextBox.PlaceholderForeColor = System.Drawing.Color.Black;
             this.DisplayTextBox.PlaceholderText = "";
             this.DisplayTextBox.SelectedText = "";
+            this.DisplayTextBox.SelectionStart = 1;
             this.DisplayTextBox.ShadowDecoration.Parent = this.DisplayTextBox;
             this.DisplayTextBox.Size = new System.Drawing.Size(313, 64);
             this.DisplayTextBox.TabIndex = 25;

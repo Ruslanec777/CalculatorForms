@@ -15,6 +15,21 @@ namespace CalculatorApplication.Models.ActionClasses
 
         //public string Text1;
 
+        public double Value { get; set; }
+
+        public string Text
+        {
+            get
+            {
+                return Value.ToString();
+            }
+
+            set
+            {
+                Value = Convert.ToDouble(value);
+            }
+        }
+
         public Number(IMathAction mathActionParent) : base(mathActionParent)
         {
             Text = "0";
@@ -29,15 +44,5 @@ namespace CalculatorApplication.Models.ActionClasses
 
         public override List<TypesMathItems> ValidTypesOnRight => throw new NotImplementedException();
 
-
-        public override float GetValue()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override IMathObject StartCalculation()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

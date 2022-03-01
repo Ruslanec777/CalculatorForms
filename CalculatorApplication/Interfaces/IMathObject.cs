@@ -15,7 +15,7 @@ namespace CalcLibrary.Interfaces
 
         IMathAction MathActionParent { get; set; }
 
-        string Text { get; set; }
+        //string Text { get; set; }
 
         /// <summary>
         /// Допустимые типы слева
@@ -28,9 +28,6 @@ namespace CalcLibrary.Interfaces
         List<TypesMathItems> ValidTypesOnRight { get; }
 
         IMathObject PreviousElement { get; set; }
-        float GetValue();
-
-        IMathObject StartCalculation();
 
     }
 }
