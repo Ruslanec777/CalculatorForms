@@ -135,7 +135,7 @@
             this.ResultBtn.Size = new System.Drawing.Size(75, 75);
             this.ResultBtn.TabIndex = 11;
             this.ResultBtn.Text = "=";
-            this.ResultBtn.Click += new System.EventHandler(this.MathFunctionBtn_Click);
+            this.ResultBtn.Click += new System.EventHandler(this.ResultBtn_Click);
             // 
             // DecPointBtn
             // 

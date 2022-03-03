@@ -1,8 +1,6 @@
 ﻿using CalcLibrary.Enums;
 using CalcLibrary.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CalculatorApplication.Infrastructure
 {
@@ -15,13 +13,23 @@ namespace CalculatorApplication.Infrastructure
 
         public abstract List<TypesMathItems> ValidTypesOnLeft { get; }
         public abstract List<TypesMathItems> ValidTypesOnRight { get; }
-        public IMathAction MathActionParent { get; set; }
-        public IMathObject PreviousElement { get; set; }
+        public IExpression MathActionParent { get; set; }
 
-        public MathObject(IMathAction mathActionParent)
+        public MathObject(IExpression mathActionParent)
         {
             MathActionParent = mathActionParent;
+            NumberInLine = MathActionParent.Count == 0 ? 0 : MathActionParent.Last().NumberInLine + 1;
+
         }
-        
+
+        protected MathObject(IExpression mathActionParent, PrioritiesOperation prioritiesOperation) : this(mathActionParent)
+        {
+            PrioritiesOperation = prioritiesOperation;
+        }
+
+        protected MathObject(IExpression mathActionParent, PrioritiesOperation prioritiesOperation, int numberInLine) : this(mathActionParent, prioritiesOperation)
+        {
+            NumberInLine = numberInLine;
+        }
     }
 }

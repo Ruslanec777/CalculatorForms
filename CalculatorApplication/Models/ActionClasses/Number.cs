@@ -11,7 +11,7 @@ namespace CalculatorApplication.Models.ActionClasses
 {
     public class Number : MathObject
     {
-        public bool isCompletedResult= false;
+        public bool isCompletedResult = false;
 
         //public string Text1;
 
@@ -30,14 +30,20 @@ namespace CalculatorApplication.Models.ActionClasses
             }
         }
 
-        public Number(IMathAction mathActionParent) : base(mathActionParent)
+        public Number(IExpression mathActionParent) : base(mathActionParent, PrioritiesOperation.impracticable)
         {
             Text = "0";
         }
 
-        public Number(IMathAction mathActionParent, string text): this(mathActionParent)
+        public Number(IExpression mathActionParent, string text) : this(mathActionParent)
         {
             Text = text;
+        }
+
+        public Number(IExpression mathActionParent, string text, bool isCompletedResult) : base(mathActionParent, PrioritiesOperation.impracticable)
+        {
+            Text = text;
+            this.isCompletedResult = isCompletedResult;
         }
 
         public override List<TypesMathItems> ValidTypesOnLeft => throw new NotImplementedException();

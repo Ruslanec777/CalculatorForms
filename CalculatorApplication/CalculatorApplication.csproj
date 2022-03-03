@@ -46,9 +46,9 @@
     <Compile Include="Interfaces\IMathAction.cs" />
     <Compile Include="Interfaces\IMathObject.cs" />
     <Compile Include="Models\ActionClasses\Number.cs" />
-    <Compile Include="Models\MathAction.cs" />
+    <Compile Include="Models\Expression.cs" />
     <Compile Include="Infrastructure\MathObject.cs" />
-    <Compile Include="Models\MathFunctions\MathFunction.cs" />
+    <Compile Include="Models\MathFunctions\MathOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

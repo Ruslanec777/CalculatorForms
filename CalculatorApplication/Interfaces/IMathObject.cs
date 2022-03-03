@@ -13,7 +13,7 @@ namespace CalcLibrary.Interfaces
         PrioritiesOperation PrioritiesOperation { get; set; }
         int NumberInLine { get; set; }
 
-        IMathAction MathActionParent { get; set; }
+        IExpression MathActionParent { get; set; }
 
         //string Text { get; set; }
 
@@ -26,8 +26,6 @@ namespace CalcLibrary.Interfaces
         /// Допустимые типы справа
         /// </summary>
         List<TypesMathItems> ValidTypesOnRight { get; }
-
-        IMathObject PreviousElement { get; set; }
 
     }
 }

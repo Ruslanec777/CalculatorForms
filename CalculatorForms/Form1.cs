@@ -12,14 +12,14 @@ namespace CalculatorForms
 {
     public partial class Form1 : Form
     {
-        public IMathAction Action { get; set; }
+        public IExpression Expression { get; set; }
         public Form1()
         {
             InitializeComponent();
 
             SetDisplayText("0");
 
-            Action = new MathAction();
+            Expression = new Expression();
         }
 
         private void AddMathObjectToAction(IMathObject mathObject)
@@ -31,7 +31,7 @@ namespace CalculatorForms
         {
             CustomButtonBase buttonBase = (CustomButtonBase)sender;
 
-            IMathObject lastMathObject = Action.Last();
+            IMathObject lastMathObject = Expression.Last();
 
             lastMathObject = lastMathObject as Number;
 
@@ -39,15 +39,9 @@ namespace CalculatorForms
             {
                 if (number.isCompletedResult == true)
                 {
-                    Action.Clear();
+                    Expression.Clear();
 
-                    DisplayClear();
-
-                    SetDisplayText(buttonBase.Text);
-
-                    Number newNumber = new Number(Action, GetDisplayText());
-
-                    Action.Add(newNumber);
+                    AddNewNumber(buttonBase);
 
                     return;
                 }
@@ -65,6 +59,11 @@ namespace CalculatorForms
                     number.Text = str;
                 }
             }
+            else
+            {
+                AddNewNumber(buttonBase);
+
+            }
 
             //if (lastMathObject.GetType().Equals(typeof(Number)) && (Number)lastMathObject.) 
             //{
@@ -73,6 +72,17 @@ namespace CalculatorForms
             //    new Number(Action, DisplayTextBox.Text).AddYourselfToActionQueue();
 
             //}
+        }
+
+        private void AddNewNumber(CustomButtonBase buttonBase)
+        {
+            DisplayClear();
+
+            SetDisplayText(buttonBase.Text);
+
+            Number newNumber = new Number(Expression, GetDisplayText());
+
+            Expression.Add(newNumber);
         }
 
         private void AddSymbolToDisplay(string text)
@@ -119,7 +129,16 @@ namespace CalculatorForms
                 case "%":
                     typesMathItems = TypesMathItems.Percentage;
 
-                    break;
+                    Expression.Add(new MathOperation(Expression, typesMathItems));
+
+                    if (Expression.Last() is MathOperation mathOperation)
+                    {
+                        mathOperation.Run();
+                    }
+
+                    SetDisplayText((Number)Expression.Last());
+
+                    return;
                 case "÷":
                     typesMathItems = TypesMathItems.Dev;
 
@@ -136,16 +155,24 @@ namespace CalculatorForms
                     typesMathItems = TypesMathItems.Sum;
 
                     break;
-                case "=":
-                    typesMathItems = TypesMathItems.Result;
-
-                    break;
 
                 default:
                     throw new Exception();
             }
 
-            Action.Add(new MathFunction(Action, typesMathItems));
+            Expression.Add(new MathOperation(Expression, typesMathItems));
+            //Action.Last().
+        }
+
+        private void ResultBtn_Click(object sender, EventArgs e)
+        {
+            Expression.Calculate();
+
+            if (Expression.Last() is Number number)
+            {
+                SetDisplayText(number);
+            }
+
         }
     }
 }

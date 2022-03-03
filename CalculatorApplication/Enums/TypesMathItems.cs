@@ -14,6 +14,6 @@ namespace CalcLibrary.Enums
         Mult,
         Dev,
         Percentage,
-        Result
+        
     }
 }
