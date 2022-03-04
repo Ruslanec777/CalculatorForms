@@ -174,5 +174,22 @@ namespace CalculatorForms
             }
 
         }
+
+        private void guna2CircleButton15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void signBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            Expression.Clear();
+            Expression.Add(new Number(Expression));
+            SetDisplayText((Number)Expression.Last());
+        }
     }
 }

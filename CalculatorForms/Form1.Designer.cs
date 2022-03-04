@@ -41,8 +41,8 @@
             this.guna2CircleButton12 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.DevideBtn = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CircleButton14 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton15 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CircleButton16 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.signBtn = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.resetBtn = new Guna.UI2.WinForms.Guna2CircleButton();
             this.MultiplyBtn = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CircleButton18 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.guna2CircleButton19 = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -278,37 +278,39 @@
             this.guna2CircleButton14.Text = "%";
             this.guna2CircleButton14.Click += new System.EventHandler(this.MathFunctionBtn_Click);
             // 
-            // guna2CircleButton15
+            // signBtn
             // 
-            this.guna2CircleButton15.CheckedState.Parent = this.guna2CircleButton15;
-            this.guna2CircleButton15.CustomImages.Parent = this.guna2CircleButton15;
-            this.guna2CircleButton15.FillColor = System.Drawing.Color.Gainsboro;
-            this.guna2CircleButton15.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.guna2CircleButton15.ForeColor = System.Drawing.Color.Black;
-            this.guna2CircleButton15.HoverState.Parent = this.guna2CircleButton15;
-            this.guna2CircleButton15.Location = new System.Drawing.Point(92, 124);
-            this.guna2CircleButton15.Name = "guna2CircleButton15";
-            this.guna2CircleButton15.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton15.ShadowDecoration.Parent = this.guna2CircleButton15;
-            this.guna2CircleButton15.Size = new System.Drawing.Size(75, 75);
-            this.guna2CircleButton15.TabIndex = 22;
-            this.guna2CircleButton15.Text = "+/-";
+            this.signBtn.CheckedState.Parent = this.signBtn;
+            this.signBtn.CustomImages.Parent = this.signBtn;
+            this.signBtn.FillColor = System.Drawing.Color.Gainsboro;
+            this.signBtn.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.signBtn.ForeColor = System.Drawing.Color.Black;
+            this.signBtn.HoverState.Parent = this.signBtn;
+            this.signBtn.Location = new System.Drawing.Point(92, 124);
+            this.signBtn.Name = "signBtn";
+            this.signBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.signBtn.ShadowDecoration.Parent = this.signBtn;
+            this.signBtn.Size = new System.Drawing.Size(75, 75);
+            this.signBtn.TabIndex = 22;
+            this.signBtn.Text = "+/-";
+            this.signBtn.Click += new System.EventHandler(this.signBtn_Click);
             // 
-            // guna2CircleButton16
+            // resetBtn
             // 
-            this.guna2CircleButton16.CheckedState.Parent = this.guna2CircleButton16;
-            this.guna2CircleButton16.CustomImages.Parent = this.guna2CircleButton16;
-            this.guna2CircleButton16.FillColor = System.Drawing.Color.Gainsboro;
-            this.guna2CircleButton16.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.guna2CircleButton16.ForeColor = System.Drawing.Color.Black;
-            this.guna2CircleButton16.HoverState.Parent = this.guna2CircleButton16;
-            this.guna2CircleButton16.Location = new System.Drawing.Point(11, 124);
-            this.guna2CircleButton16.Name = "guna2CircleButton16";
-            this.guna2CircleButton16.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton16.ShadowDecoration.Parent = this.guna2CircleButton16;
-            this.guna2CircleButton16.Size = new System.Drawing.Size(75, 75);
-            this.guna2CircleButton16.TabIndex = 21;
-            this.guna2CircleButton16.Text = "AC";
+            this.resetBtn.CheckedState.Parent = this.resetBtn;
+            this.resetBtn.CustomImages.Parent = this.resetBtn;
+            this.resetBtn.FillColor = System.Drawing.Color.Gainsboro;
+            this.resetBtn.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resetBtn.ForeColor = System.Drawing.Color.Black;
+            this.resetBtn.HoverState.Parent = this.resetBtn;
+            this.resetBtn.Location = new System.Drawing.Point(11, 124);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.resetBtn.ShadowDecoration.Parent = this.resetBtn;
+            this.resetBtn.Size = new System.Drawing.Size(75, 75);
+            this.resetBtn.TabIndex = 21;
+            this.resetBtn.Text = "AC";
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
             // 
             // MultiplyBtn
             // 
@@ -419,8 +421,8 @@
             this.Controls.Add(this.DisplayTextBox);
             this.Controls.Add(this.DevideBtn);
             this.Controls.Add(this.guna2CircleButton14);
-            this.Controls.Add(this.guna2CircleButton15);
-            this.Controls.Add(this.guna2CircleButton16);
+            this.Controls.Add(this.signBtn);
+            this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.MultiplyBtn);
             this.Controls.Add(this.guna2CircleButton18);
             this.Controls.Add(this.guna2CircleButton19);
@@ -457,8 +459,8 @@
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton12;
         private Guna.UI2.WinForms.Guna2CircleButton DevideBtn;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton14;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton15;
-        private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton16;
+        private Guna.UI2.WinForms.Guna2CircleButton signBtn;
+        private Guna.UI2.WinForms.Guna2CircleButton resetBtn;
         private Guna.UI2.WinForms.Guna2CircleButton MultiplyBtn;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton18;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton19;
