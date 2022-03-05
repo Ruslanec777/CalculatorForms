@@ -33,7 +33,7 @@ namespace CalculatorForms
 
             IMathObject lastMathObject = Expression.Last();
 
-            lastMathObject = lastMathObject as Number;
+            //lastMathObject = lastMathObject as Number;
 
             if (lastMathObject is Number number)
             {
@@ -62,16 +62,7 @@ namespace CalculatorForms
             else
             {
                 AddNewNumber(buttonBase);
-
             }
-
-            //if (lastMathObject.GetType().Equals(typeof(Number)) && (Number)lastMathObject.) 
-            //{
-            //    Action.Actions.RemoveAt(Action.Actions.Count - 1);
-
-            //    new Number(Action, DisplayTextBox.Text).AddYourselfToActionQueue();
-
-            //}
         }
 
         private void AddNewNumber(CustomButtonBase buttonBase)
@@ -175,14 +166,54 @@ namespace CalculatorForms
 
         }
 
-        private void guna2CircleButton15_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void signBtn_Click(object sender, EventArgs e)
         {
 
+            CustomButtonBase buttonBase = (CustomButtonBase)sender;
+
+            IMathObject lastMathObject = Expression.Last();
+
+            //lastMathObject = lastMathObject as Number;
+
+            if (lastMathObject is Number number)
+            {
+                if (number.isCompletedResult == true)
+                {
+                    Expression.Clear();
+
+                    AddMathObjectToAction(new Number(Expression,"-0"));
+
+                    return;
+                }
+                else
+                {
+                    string displayText = GetDisplayText();
+
+                    if (displayText[0]=='-')
+                    {
+
+                    }
+
+                    AddSymbolToDisplay(buttonBase.Text);
+
+                    if (GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
+                    {
+                        SetDisplayText(GetDisplayText().Remove(0, 1));
+                    }
+
+                    string str = GetDisplayText();
+
+                    number.Text = str;
+                }
+            }
+            else
+            {
+                AddNewNumber(buttonBase);
+                IMathObject tempMathObject = Expression.Last();
+                tempMathObject.
+
+
+            }
         }
 
         private void resetBtn_Click(object sender, EventArgs e)

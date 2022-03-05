@@ -50,5 +50,10 @@ namespace CalculatorApplication.Models.ActionClasses
 
         public override List<TypesMathItems> ValidTypesOnRight => throw new NotImplementedException();
 
+        public void ChangeSign()
+        {
+            Value *= -1;
+        }
+
     }
 }
