@@ -3,9 +3,6 @@ using CalcLibrary.Interfaces;
 using CalculatorApplication.Infrastructure;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatorApplication.Models.ActionClasses
 {
@@ -21,14 +18,26 @@ namespace CalculatorApplication.Models.ActionClasses
         {
             get
             {
-                return Value.ToString();
+                if (IsNegativ)
+                {
+                    return "-" + Value.ToString();
+                }
+                else
+                {
+                    return Value.ToString();
+                }
             }
 
             set
             {
-                Value = Convert.ToDouble(value);
+
+                Value = Convert.ToDouble((IsNegativ & value[0]!='-' ? "-" : "") + value);
             }
         }
+        /// <summary>
+        /// знак числа true ->negativ
+        /// </summary>
+        public bool IsNegativ { get; set; }
 
         public Number(IExpression mathActionParent) : base(mathActionParent, PrioritiesOperation.impracticable)
         {
@@ -52,7 +61,18 @@ namespace CalculatorApplication.Models.ActionClasses
 
         public void ChangeSign()
         {
-            Value *= -1;
+            IsNegativ = !IsNegativ;
+            Value = -1 * Value;
+        }
+
+        public void SetPsitive()
+        {
+            IsNegativ = true;
+        }
+
+        public void SetNegative()
+        {
+            IsNegativ = true;
         }
 
     }

@@ -49,10 +49,7 @@ namespace CalculatorForms
                 {
                     AddSymbolToDisplay(buttonBase.Text);
 
-                    if (GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
-                    {
-                        SetDisplayText(GetDisplayText().Remove(0, 1));
-                    }
+                    SetDisplayText( NormaliseNumber());
 
                     string str = GetDisplayText();
 
@@ -63,6 +60,21 @@ namespace CalculatorForms
             {
                 AddNewNumber(buttonBase);
             }
+        }
+
+        private string NormaliseNumber()
+        {
+            if (GetDisplayText().Length>1 && GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
+            {
+               return (GetDisplayText().Remove(0, 1));
+            }
+
+            if (GetDisplayText()[0] == '-' && GetDisplayText()[1] == '0' && GetDisplayText()[2] != ',')
+            {
+                return (GetDisplayText().Remove(1, 1));
+            }
+
+            return GetDisplayText();
         }
 
         private void AddNewNumber(CustomButtonBase buttonBase)
@@ -76,9 +88,40 @@ namespace CalculatorForms
             Expression.Add(newNumber);
         }
 
+        private void AddNewNumber(Number number)
+        {
+            DisplayClear();
+
+            SetDisplayText(number.Text);
+
+            Expression.Add(number);
+        }
+
         private void AddSymbolToDisplay(string text)
         {
+            if (!CheckValidNumber(text))
+            {
+                return;
+            } 
             DisplayTextBox.Text += text;
+        }
+
+        private bool CheckValidNumber(string text)
+        {
+            if (Expression.Last() is Number number)
+            {
+                if (number.Text[0] == '0' && text == "0")
+                {
+                    return false;
+                }
+
+                if (number.Text[0] == '-' && number.Text[1] == '0' && text== "0")
+                {
+                    return false;
+                }  
+            }
+
+            return true;
         }
 
         private void DecPointBtnClick(object sender, EventArgs e)
@@ -169,11 +212,7 @@ namespace CalculatorForms
         private void signBtn_Click(object sender, EventArgs e)
         {
 
-            CustomButtonBase buttonBase = (CustomButtonBase)sender;
-
             IMathObject lastMathObject = Expression.Last();
-
-            //lastMathObject = lastMathObject as Number;
 
             if (lastMathObject is Number number)
             {
@@ -181,37 +220,25 @@ namespace CalculatorForms
                 {
                     Expression.Clear();
 
-                    AddMathObjectToAction(new Number(Expression,"-0"));
+                    Number newNumber = new Number(Expression);
+                    newNumber.SetNegative();
+
+                    AddNewNumber(newNumber);
 
                     return;
                 }
                 else
                 {
-                    string displayText = GetDisplayText();
-
-                    if (displayText[0]=='-')
-                    {
-
-                    }
-
-                    AddSymbolToDisplay(buttonBase.Text);
-
-                    if (GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
-                    {
-                        SetDisplayText(GetDisplayText().Remove(0, 1));
-                    }
-
-                    string str = GetDisplayText();
-
-                    number.Text = str;
+                    number.ChangeSign();
+                    SetDisplayText(number.Text.ToString());
                 }
             }
             else
             {
-                AddNewNumber(buttonBase);
-                IMathObject tempMathObject = Expression.Last();
-                tempMathObject.
+                Number newNumber = new Number(Expression);
+                newNumber.SetNegative();
 
+                AddNewNumber(newNumber);
 
             }
         }
@@ -221,6 +248,11 @@ namespace CalculatorForms
             Expression.Clear();
             Expression.Add(new Number(Expression));
             SetDisplayText((Number)Expression.Last());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
