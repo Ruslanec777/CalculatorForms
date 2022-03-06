@@ -22,11 +22,6 @@ namespace CalculatorForms
             Expression = new Expression();
         }
 
-        private void AddMathObjectToAction(IMathObject mathObject)
-        {
-            throw new NotImplementedException();
-        }
-
         private void ClickNumber(object sender, EventArgs e)
         {
             CustomButtonBase buttonBase = (CustomButtonBase)sender;
@@ -49,7 +44,7 @@ namespace CalculatorForms
                 {
                     AddSymbolToDisplay(buttonBase.Text);
 
-                    SetDisplayText( NormaliseNumber());
+                    SetDisplayText(NormaliseNumber());
 
                     string str = GetDisplayText();
 
@@ -64,12 +59,12 @@ namespace CalculatorForms
 
         private string NormaliseNumber()
         {
-            if (GetDisplayText().Length>1 && GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
+            if (GetDisplayText().Length > 1 && GetDisplayText()[0] == '0' && GetDisplayText()[1] != ',')
             {
-               return (GetDisplayText().Remove(0, 1));
+                return (GetDisplayText().Remove(0, 1));
             }
 
-            if (GetDisplayText()[0] == '-' && GetDisplayText()[1] == '0' && GetDisplayText()[2] != ',')
+            if (GetDisplayText().Length > 2 && GetDisplayText()[0] == '-' && GetDisplayText()[1] == '0' && GetDisplayText()[2] != ',')
             {
                 return (GetDisplayText().Remove(1, 1));
             }
@@ -102,24 +97,35 @@ namespace CalculatorForms
             if (!CheckValidNumber(text))
             {
                 return;
-            } 
+            }
             DisplayTextBox.Text += text;
         }
 
         private bool CheckValidNumber(string text)
         {
-            if (Expression.Last() is Number number)
+            switch (GetDisplayText().Length)
             {
-                if (number.Text[0] == '0' && text == "0")
-                {
-                    return false;
-                }
+                case 1:
+                    if (GetDisplayText()[0] == '0' && text == "0")
+                        return false;
+                    break;
 
-                if (number.Text[0] == '-' && number.Text[1] == '0' && text== "0")
-                {
-                    return false;
-                }  
+                case 2:
+                    if (GetDisplayText()[0] == '-' && GetDisplayText()[0] == '0' && text == "0")
+                        return false;
+
+                    break;
+
+                default:
+                    return true;
             }
+
+
+            if (GetDisplayText().Length == 2 && GetDisplayText()[0] == '-' && GetDisplayText()[1] == '0' && text == "0")
+            {
+                return false;
+            }
+
 
             return true;
         }

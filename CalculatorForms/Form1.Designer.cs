@@ -438,6 +438,9 @@
             this.Controls.Add(this.guna2CircleButton2);
             this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.Btn_1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(358, 586);
+            this.MinimumSize = new System.Drawing.Size(358, 586);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

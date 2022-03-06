@@ -10,15 +10,13 @@ namespace CalculatorApplication.Models.ActionClasses
     {
         public bool isCompletedResult = false;
 
-        //public string Text1;
-
         public double Value { get; set; }
 
         public string Text
         {
             get
             {
-                if (IsNegativ)
+                if (IsNegativ && Value==0)
                 {
                     return "-" + Value.ToString();
                 }
@@ -65,7 +63,7 @@ namespace CalculatorApplication.Models.ActionClasses
             Value = -1 * Value;
         }
 
-        public void SetPsitive()
+        public void SetPositive()
         {
             IsNegativ = true;
         }
