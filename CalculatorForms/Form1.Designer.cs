@@ -50,23 +50,6 @@
             this.DisplayTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
             // 
-            // Btn_1
-            // 
-            this.Btn_1.CheckedState.Parent = this.Btn_1;
-            this.Btn_1.CustomImages.Parent = this.Btn_1;
-            this.Btn_1.FillColor = System.Drawing.Color.DimGray;
-            this.Btn_1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Btn_1.ForeColor = System.Drawing.Color.White;
-            this.Btn_1.HoverState.Parent = this.Btn_1;
-            this.Btn_1.Location = new System.Drawing.Point(11, 367);
-            this.Btn_1.Name = "Btn_1";
-            this.Btn_1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.Btn_1.ShadowDecoration.Parent = this.Btn_1;
-            this.Btn_1.Size = new System.Drawing.Size(75, 75);
-            this.Btn_1.TabIndex = 4;
-            this.Btn_1.Text = "1";
-            this.Btn_1.Click += new System.EventHandler(this.ClickNumber);
-            // 
             // guna2CircleButton1
             // 
             this.guna2CircleButton1.CheckedState.Parent = this.guna2CircleButton1;
@@ -83,6 +66,23 @@
             this.guna2CircleButton1.TabIndex = 5;
             this.guna2CircleButton1.Text = "2";
             this.guna2CircleButton1.Click += new System.EventHandler(this.ClickNumber);
+            // 
+            // Btn_1
+            // 
+            this.Btn_1.CheckedState.Parent = this.Btn_1;
+            this.Btn_1.CustomImages.Parent = this.Btn_1;
+            this.Btn_1.FillColor = System.Drawing.Color.DimGray;
+            this.Btn_1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Btn_1.ForeColor = System.Drawing.Color.White;
+            this.Btn_1.HoverState.Parent = this.Btn_1;
+            this.Btn_1.Location = new System.Drawing.Point(11, 367);
+            this.Btn_1.Name = "Btn_1";
+            this.Btn_1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.Btn_1.ShadowDecoration.Parent = this.Btn_1;
+            this.Btn_1.Size = new System.Drawing.Size(75, 75);
+            this.Btn_1.TabIndex = 4;
+            this.Btn_1.Text = "1";
+            this.Btn_1.Click += new System.EventHandler(this.ClickNumber);
             // 
             // guna2CircleButton2
             // 
@@ -293,7 +293,7 @@
             this.signBtn.Size = new System.Drawing.Size(75, 75);
             this.signBtn.TabIndex = 22;
             this.signBtn.Text = "+/-";
-            this.signBtn.Click += new System.EventHandler(this.signBtn_Click);
+            this.signBtn.Click += new System.EventHandler(this.SignBtn_Click);
             // 
             // resetBtn
             // 
@@ -310,7 +310,7 @@
             this.resetBtn.Size = new System.Drawing.Size(75, 75);
             this.resetBtn.TabIndex = 21;
             this.resetBtn.Text = "AC";
-            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
+            this.resetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
             // 
             // MultiplyBtn
             // 
@@ -436,13 +436,15 @@
             this.Controls.Add(this.DecPointBtn);
             this.Controls.Add(this.PlusBtn);
             this.Controls.Add(this.guna2CircleButton2);
-            this.Controls.Add(this.guna2CircleButton1);
             this.Controls.Add(this.Btn_1);
+            this.Controls.Add(this.guna2CircleButton1);
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(358, 586);
             this.MinimumSize = new System.Drawing.Size(358, 586);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
 
         }
